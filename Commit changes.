@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>College AI Assistant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f7fb;
+      color: #222;
+    }
+
+    header {
+      background: #2563eb;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      margin-bottom: 20px;
+      border-radius: 15px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    }
+
+    textarea {
+      width: 100%;
+      height: 120px;
+      padding: 12px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 12px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    #answer {
+      margin-top: 20px;
+      padding: 15px;
+      background: #eef4ff;
+      border-radius: 10px;
+      min-height: 30px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>🤖 College AI Assistant</h1>
+    <p>Your simple study companion</p>
+  </header>
+
+  <div class="container">
+
+    <div class="card">
+      <h2>📚 Ask a Question</h2>
+
+      <textarea id="question"
+        placeholder="Type your question here..."></textarea>
+
+      <button onclick="getAnswer()">Get Help</button>
+
+      <div id="answer">
+        Your answer will appear here.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>💡 Project Ideas</h2>
+      <p>• AI Study Assistant</p>
+      <p>• Student Management System</p>
+      <p>• College Event Planner</p>
+      <p>• Online Notes Organizer</p>
+    </div>
+
+    <div class="card">
+      <h2>📝 Study Tools</h2>
+      <p>Use this website as a starting point for your college study tools.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    © 2026 College AI Assistant
+  </footer>
+
+  <script>
+    function getAnswer() {
+      let question = document.getElementById("question").value;
+      let answer = document.getElementById("answer");
+
+      if (question
