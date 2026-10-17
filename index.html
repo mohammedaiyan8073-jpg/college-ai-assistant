@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>College AI Assistant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <h1>🎓 College AI Assistant</h1>
+  <p>Your AI helper for college students.</p>
+
+  <input id="question" type="text" placeholder="Ask your question...">
+  <button onclick="askAI()">Ask AI</button>
+
+  <p id="answer"></p>
+
+  <script>
+    function askAI() {
+      const question = document.getElementById("question").value;
+
+      if (!question) {
+        document.getElementById("answer").innerText =
+          "Please enter a question.";
+        return;
+      }
+
+      document.getElementById("answer").innerText =
+        "AI response will be connected in the next step.";
+    }
+  </script>
+</body>
+</html>
