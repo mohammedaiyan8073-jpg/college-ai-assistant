@@ -1,31 +1,147 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>College AI Assistant</title>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>College AI Assignment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f7fb;
+      color: #222;
+    }
+
+    header {
+      background: #2636c9;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #2636c9;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background: #2636c9;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #18259b;
+    }
+
+    #answer {
+      margin-top: 20px;
+      padding: 15px;
+      background: #eef0ff;
+      border-radius: 8px;
+      min-height: 30px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #666;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>🎓 College AI Assistant</h1>
-  <p>Your AI helper for college students.</p>
 
-  <input id="question" type="text" placeholder="Ask your question...">
-  <button onclick="askAI()">Ask AI</button>
+  <header>
+    <h1>College AI Assignment</h1>
+    <p>Learn, Ask and Explore with AI</p>
+  </header>
 
-  <p id="answer"></p>
+  <div class="container">
+
+    <div class="card">
+      <h2>About the Project</h2>
+      <p>
+        This website is a simple AI-based educational project created
+        for a college assignment. It demonstrates how students can
+        interact with an AI-style question and answer interface.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Ask a Question</h2>
+
+      <input
+        type="text"
+        id="question"
+        placeholder="Enter your question here..."
+      >
+
+      <button onclick="getAnswer()">Ask AI</button>
+
+      <div id="answer">
+        Your answer will appear here.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Project Objectives</h2>
+      <ul>
+        <li>Understand the basic concept of Artificial Intelligence.</li>
+        <li>Demonstrate an AI-style question and answer system.</li>
+        <li>Create a simple and user-friendly website.</li>
+        <li>Show how technology can support education.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>College AI Assignment Project © 2026</p>
+  </footer>
 
   <script>
-    function askAI() {
+    function getAnswer() {
       const question = document.getElementById("question").value;
+      const answer = document.getElementById("answer");
 
-      if (!question) {
-        document.getElementById("answer").innerText =
-          "Please enter a question.";
+      if (question.trim() === "") {
+        answer.innerHTML = "Please enter a question.";
         return;
       }
 
-      document.getElementById("answer").innerText =
-        "AI response will be connected in the next step.";
+      answer.innerHTML =
+        "AI Response: Your question is \"" +
+        question +
+        "\". This is a demonstration of an AI-style educational assistant.";
     }
   </script>
+
 </body>
 </html>
