@@ -144,4 +144,31 @@
   </script>
 
 </body>
-</html>
+</html><hr>
+<h2>Filter List</h2>
+
+<select id="filter">
+  <option value="all">All Topics</option>
+  <option value="ai">Artificial Intelligence</option>
+  <option value="education">Education</option>
+</select>
+
+<ul id="topicList">
+  <li data-topic="ai">Artificial Intelligence</li>
+  <li data-topic="education">AI in Education</li>
+  <li data-topic="ai">Machine Learning</li>
+</ul>
+
+<script>
+const filter = document.getElementById("filter");
+const items = document.querySelectorAll("#topicList li");
+
+filter.addEventListener("change", function() {
+  items.forEach(item => {
+    item.style.display =
+      this.value === "all" || item.dataset.topic === this.value
+        ? "list-item"
+        : "none";
+  });
+});
+</script>
