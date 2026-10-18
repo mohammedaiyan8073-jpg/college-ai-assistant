@@ -4,171 +4,174 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>College AI Assignment</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background: #f4f7fb;
+      padding: 20px;
+      background: #f4f6f8;
       color: #222;
     }
 
-    header {
-      background: #2636c9;
-      color: white;
-      padding: 30px 20px;
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+    }
+
+    h1 {
       text-align: center;
     }
 
-    .container {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 20px;
-    }
-
-    .card {
-      background: white;
-      padding: 25px;
-      margin-bottom: 20px;
-      border-radius: 12px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
-    }
-
-    h2 {
-      color: #2636c9;
-    }
-
-    input, textarea {
+    input, select, button {
       width: 100%;
       padding: 12px;
-      margin-top: 8px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+      margin-top: 10px;
       box-sizing: border-box;
+      border-radius: 6px;
+      border: 1px solid #ccc;
     }
 
     button {
-      background: #2636c9;
+      cursor: pointer;
+      background: #222;
       color: white;
       border: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      cursor: pointer;
     }
 
     button:hover {
-      background: #18259b;
+      opacity: 0.9;
     }
 
-    #answer {
-      margin-top: 20px;
+    .answer {
+      margin-top: 15px;
       padding: 15px;
-      background: #eef0ff;
+      background: #f0f0f0;
       border-radius: 8px;
-      min-height: 30px;
+    }
+
+    li {
+      margin: 8px 0;
     }
 
     footer {
       text-align: center;
-      padding: 20px;
-      color: #666;
+      margin-top: 25px;
+      font-size: 14px;
     }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <h1>College AI Assignment</h1>
-    <p>Learn, Ask and Explore with AI</p>
-  </header>
+<div class="container">
 
-  <div class="container">
+  <h1>College AI Assignment</h1>
 
-    <div class="card">
-      <h2>About the Project</h2>
-      <p>
-        This website is a simple AI-based educational project created
-        for a college assignment. It demonstrates how students can
-        interact with an AI-style question and answer interface.
-      </p>
-    </div>
+  <p style="text-align:center;">
+    <strong>Learn, Ask and Explore with AI</strong>
+  </p>
 
-    <div class="card">
-      <h2>Ask a Question</h2>
+  <hr>
 
-      <input
-        type="text"
-        id="question"
-        placeholder="Enter your question here..."
-      >
+  <h2>About the Project</h2>
 
-      <button onclick="getAnswer()">Ask AI</button>
+  <p>
+    This website is a simple AI-based educational project created for a
+    college assignment. It demonstrates how students can interact with
+    an AI-style question and answer interface.
+  </p>
 
-      <div id="answer">
-        Your answer will appear here.
-      </div>
-    </div>
+  <h2>Ask a Question</h2>
 
-    <div class="card">
-      <h2>Project Objectives</h2>
-      <ul>
-        <li>Understand the basic concept of Artificial Intelligence.</li>
-        <li>Demonstrate an AI-style question and answer system.</li>
-        <li>Create a simple and user-friendly website.</li>
-        <li>Show how technology can support education.</li>
-      </ul>
-    </div>
+  <input
+    type="text"
+    id="question"
+    placeholder="Type your question here..."
+  >
 
+  <button onclick="askAI()">Ask AI</button>
+
+  <div class="answer" id="answer">
+    Your answer will appear here.
   </div>
 
+  <h2>Filter List</h2>
+
+  <select id="filter" onchange="filterTopics()">
+    <option value="all">All Topics</option>
+    <option value="ai">Artificial Intelligence</option>
+    <option value="education">Education</option>
+  </select>
+
+  <ul id="topicList">
+    <li data-topic="ai">Artificial Intelligence</li>
+    <li data-topic="ai">Machine Learning</li>
+    <li data-topic="education">AI in Education</li>
+    <li data-topic="education">Technology in Education</li>
+  </ul>
+
+  <h2>Project Objectives</h2>
+
+  <ul>
+    <li>Understand the basic concept of Artificial Intelligence.</li>
+    <li>Demonstrate an AI-style question and answer system.</li>
+    <li>Create a simple and user-friendly website.</li>
+    <li>Show how technology can support education.</li>
+  </ul>
+
   <footer>
-    <p>College AI Assignment Project © 2026</p>
+    College AI Assignment Project © 2026
   </footer>
 
-  <script>
-    function getAnswer() {
-      const question = document.getElementById("question").value;
-      const answer = document.getElementById("answer");
-
-      if (question.trim() === "") {
-        answer.innerHTML = "Please enter a question.";
-        return;
-      }
-
-      answer.innerHTML =
-        "AI Response: Your question is \"" +
-        question +
-        "\". This is a demonstration of an AI-style educational assistant.";
-    }
-  </script>
-
-</body>
-</html><hr>
-<h2>Filter List</h2>
-
-<select id="filter">
-  <option value="all">All Topics</option>
-  <option value="ai">Artificial Intelligence</option>
-  <option value="education">Education</option>
-</select>
-
-<ul id="topicList">
-  <li data-topic="ai">Artificial Intelligence</li>
-  <li data-topic="education">AI in Education</li>
-  <li data-topic="ai">Machine Learning</li>
-</ul>
+</div>
 
 <script>
-const filter = document.getElementById("filter");
-const items = document.querySelectorAll("#topicList li");
+function askAI() {
+  const question = document.getElementById("question").value.trim();
+  const answer = document.getElementById("answer");
 
-filter.addEventListener("change", function() {
-  items.forEach(item => {
-    item.style.display =
-      this.value === "all" || item.dataset.topic === this.value
-        ? "list-item"
-        : "none";
+  if (question === "") {
+    answer.textContent = "Please type a question first.";
+    return;
+  }
+
+  const q = question.toLowerCase();
+
+  if (q.includes("what is ai") || q.includes("artificial intelligence")) {
+    answer.textContent =
+      "Artificial Intelligence (AI) is technology that enables computers to perform tasks that normally require human intelligence, such as learning, problem-solving and understanding language.";
+  } 
+  else if (q.includes("machine learning")) {
+    answer.textContent =
+      "Machine Learning is a part of AI that allows computers to learn patterns from data and improve their performance.";
+  } 
+  else if (q.includes("education")) {
+    answer.textContent =
+      "AI can support education by helping students learn, find information, practice concepts and receive personalized assistance.";
+  } 
+  else {
+    answer.textContent =
+      "This is a simple AI-style educational project. Try asking about AI, Machine Learning or Education.";
+  }
+}
+
+function filterTopics() {
+  const selected = document.getElementById("filter").value;
+  const topics = document.querySelectorAll("#topicList li");
+
+  topics.forEach(function(topic) {
+    if (selected === "all" || topic.dataset.topic === selected) {
+      topic.style.display = "list-item";
+    } else {
+      topic.style.display = "none";
+    }
   });
-});
+}
 </script>
+
+</body>
+</html>
